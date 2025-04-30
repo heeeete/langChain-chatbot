@@ -1,6 +1,6 @@
-,,,
-// .env
+### .env
+```
 LANGSMITH_TRACING = "true"
 LANGSMITH_API_KEY = "..."
 OPENAI_API_KEY="..."
-,,,
+```
