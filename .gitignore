@@ -1,5 +1,14 @@
-node_modules
+# macOS
+.DS_Store
 
-/.cache
-/build
+# dependencies
+/node_modules/
+
+# React Router cache (렌더 힌트 파일 등)
+.react-router/
+
+# build artifacts
+/build/
+
+# 환경변수
 .env

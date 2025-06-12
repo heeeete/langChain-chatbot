@@ -1,15 +1,14 @@
 import { useRef, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
+import { SystemMessage, HumanMessage, AIMessage, trimMessages } from "@langchain/core/messages";
 
-import { BaseMessage } from "@langchain/core/messages";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function Index() {
-	// const config = { configurable: { thread_id: uuidv4() } };
-
-	const [currMessage, setCurrMessage] = useState<BaseMessage[]>([]);
+	const [currMessage, setCurrMessage] = useState([]);
 	const [currConfig, setCurrConfig] = useState(uuidv4());
-	// const [currConfig, setCurrConfig] = useState("26017e26-5758-46e5-bedf-577bc05f5a39");
 
 	const [isComposing, setIsComposing] = useState(false); // 조합 상태
 	const [message, setMessage] = useState("");
@@ -18,12 +17,7 @@ export default function Index() {
 	const sendMessage = async () => {
 		if (message.trim().length === 0) return;
 
-		const currMessage = [
-			{
-				role: "user",
-				content: message,
-			},
-		];
+		const currMessage = new HumanMessage(message);
 
 		const res = await fetch("/api/message", {
 			method: "POST",
@@ -37,6 +31,7 @@ export default function Index() {
 		});
 
 		const a = await res.json();
+		console.log(currMessage);
 
 		setCurrMessage(a.messages);
 	};
@@ -59,16 +54,19 @@ export default function Index() {
 		<div className="">
 			<div>현재 채팅방 {currConfig}</div>
 			<div className=" w-full p-4 space-y-4 overflow-y-auto mb-10">
-				{currMessage.map((e, idx) => (
-					<pre
-						key={idx}
-						className={`w-full whitespace-pre-wrap break-words font-semibold text-white ${
-							e.id.some((v) => v === "HumanMessage") && "text-right"
-						}`}
-					>
-						{e.kwargs.content}
-					</pre>
-				))}
+				{currMessage.map((e, idx) => {
+					return (
+						<>
+							<div
+								className={`prose prose-xl max-w-none prose-blue ${
+									e.id.some((v) => v === "HumanMessage") && "text-right"
+								}`}
+							>
+								<ReactMarkdown remarkPlugins={[remarkGfm]}>{e.kwargs.content}</ReactMarkdown>
+							</div>
+						</>
+					);
+				})}
 			</div>
 			<div className="bg-gray-300 flex items-center  p-2 fixed bottom-0 w-dvw">
 				<textarea
