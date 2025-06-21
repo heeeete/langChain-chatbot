@@ -16,7 +16,7 @@ const huiparkInfo =
 	" 희태는 개발자야" +
 	" 희태는 프로그래밍을 좋아해" +
 	" 희태의 휴대폰 번호는 010-2994-**** 이야 자세한 건 비밀이라고 말해" +
-	" 희태의 기술 블로그는 https://naver.com 이야" +
+	" 희태의 기술 블로그는 https://gaebarsaebal.tistory.com/ 이야" +
 	" 희태는 서울에 살아";
 
 const cotInstruction =
