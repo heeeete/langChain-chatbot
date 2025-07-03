@@ -13,15 +13,16 @@ import { MessageState } from "~/common/constant";
 export const loader = async () => {
 	return {
 		threadId: uuidv4(),
+		shouldSendInitialMessage: true,
 	};
 };
 
 export default function Index() {
-	const { threadId } = useLoaderData<typeof loader>();
+	const { threadId, shouldSendInitialMessage } = useLoaderData<typeof loader>();
 	const [inProgress, setInProgress] = useState<MessageState>(MessageState.Waiting);
 	const [chat, setChat] = useState<(HumanMessage | AIMessage)[]>([]);
+	const isInitialMount = useRef(true);
 	useAutoScroll();
-
 	const sendMessage = (message: string) => {
 		if (!message.trim()) return;
 		setInProgress(MessageState.Waiting);
@@ -63,7 +64,10 @@ export default function Index() {
 	};
 
 	useEffect(() => {
-		sendMessage("안녕하세요!");
+		if (isInitialMount.current) {
+			isInitialMount.current = false;
+			sendMessage("안녕하세요!");
+		}
 	}, []);
 
 	return (

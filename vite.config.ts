@@ -3,7 +3,18 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import devtoolsJson from "vite-plugin-devtools-json";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-	plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), devtoolsJson()],
+	plugins: [
+		tailwindcss(),
+		reactRouter(),
+		tsconfigPaths(),
+		devtoolsJson(),
+		svgr({
+			svgrOptions: {
+				exportType: "default",
+			},
+		}),
+	],
 });
