@@ -9,7 +9,7 @@ import TistorySVG from "~/components/svg/tistory.svg?react";
 export default function Home() {
 	const navigate = useNavigate();
 	return (
-		<div className="w-vw h-dvh flex flex-col items-center justify-center">
+		<div className="w-dvw h-dvh flex flex-col items-center justify-center overflow-x-hidden overflow-y-hidden">
 			<div className="translate-y-20 flex flex-col items-center">
 				<div className="relative rounded-2xl mb-[42px] ">
 					<LogoSVG className="text-primary/20" />
