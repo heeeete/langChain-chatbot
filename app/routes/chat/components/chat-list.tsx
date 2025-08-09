@@ -1,4 +1,3 @@
-// ChatList.tsx
 import { AIMessage, HumanMessage } from '@langchain/core/messages';
 import { motion } from 'motion/react';
 import React, { useEffect, useRef } from 'react';

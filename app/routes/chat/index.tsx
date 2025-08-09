@@ -48,7 +48,6 @@ export default function Index() {
 
         setChat((c) => {
           const last = c[c.length - 1];
-          // 마지막이 AIMessage라면 덧붙이고, 아니면 새로 추가
           if (last instanceof AIMessage) {
             return [...c.slice(0, -1), new AIMessage(last.text + content)];
           } else {

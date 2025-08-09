@@ -32,19 +32,19 @@ export default function Input({
       }}
       animate={{ opacity: isFocused ? 1 : 0.5, y: isFocused ? 0 : 10 }}
       transition={{ duration: 0.2, ease: 'linear' }}
-      className="fixed bottom-0 left-1/2 w-full max-w-3xl -translate-x-1/2 bg-background py-8 max-sm:px-4"
+      className="fixed bottom-0 left-1/2 z-50 w-full max-w-3xl -translate-x-1/2 bg-background py-8 max-sm:px-4"
     >
       <Textarea
         ref={textareaRef}
         placeholder="희태에 대해 궁금한 점을 물어보세요!"
         disabled={inProgress !== MessageState.Idle}
         className="max-h-[144px] min-h-4 resize-none !text-[16px]"
-        onFocus={() => setIsFocused(true)} // 포커스 시
+        onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => {
-          if (isComposing) return; // 조합 중엔 아무 키도 처리하지 않음
+          if (isComposing) return;
 
           if (e.key === 'Enter' && e.shiftKey) {
             e.preventDefault();
