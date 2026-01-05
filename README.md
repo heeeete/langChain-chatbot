@@ -7,7 +7,7 @@
 [![LangChain](https://img.shields.io/badge/LangChain-0.3.47-green)](https://www.langchain.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.4-blue)](https://tailwindcss.com/)
 
-🔗 **Demo**: [https://chatbot-keynut.vercel.app](https://chatbot-keynut.vercel.app)
+🔗 **Demo**: [https://chatbot-zeta-kohl.vercel.app/](https://chatbot-zeta-kohl.vercel.app/)
 
 ## 📖 프로젝트 소개
 
